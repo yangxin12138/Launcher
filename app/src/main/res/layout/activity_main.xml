@@ -37,76 +37,90 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5">
+            android:layout_weight="5"
+            android:layout_marginTop="50dp">
             <ImageButton
-                android:id="@+id/image1"
-                android:layout_width="0dp"
-                android:padding="5dp"
-                android:layout_weight="1"
-                android:src="@drawable/test_bg"
+                android:id="@+id/button_youtube"
+                android:layout_width="380dp"
+                android:src="@drawable/icon_youtube"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 android:layout_height="match_parent"/>
             <ImageButton
-                android:id="@+id/image2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/test_bg"
+                android:id="@+id/button_google"
+                android:layout_width="380dp"
+                android:src="@drawable/icon_googleplay"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 android:layout_height="match_parent"/>
             <ImageButton
-                android:id="@+id/image3"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:src="@drawable/test_bg"
+                android:id="@+id/button_facebook"
+                android:layout_width="380dp"
+                android:src="@drawable/icon_facebook"
+                android:scaleType="fitXY"
                 android:background="@android:color/transparent"
                 android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5">
+            android:layout_weight="5"
+            android:layout_marginTop="20dp">
             <ImageButton
-                android:id="@+id/image4"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:padding="5dp"
-                android:src="@drawable/test_bg"
+                android:id="@+id/button_netflix"
+                android:layout_width="380dp"
+                android:src="@drawable/icon_netflix"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 android:layout_height="match_parent" />
-            <ImageButton
-                android:id="@+id/image5"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/test_bg"
-                android:padding="5dp"
-                android:background="@android:color/transparent"
-                android:layout_height="match_parent" />
-            <ImageButton
-                android:id="@+id/image6"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/test_bg"
-                android:padding="5dp"
-                android:background="@android:color/transparent"
-                android:layout_height="match_parent" />
-            <ImageButton
-                android:id="@+id/image7"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/test_bg"
-                android:padding="5dp"
-                android:background="@android:color/transparent"
-                android:layout_height="match_parent" />
-            <ImageButton
-                android:id="@+id/image8"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/test_bg"
-                android:padding="5dp"
-                android:background="@android:color/transparent"
-                android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_marginEnd="20dp"
+                android:layout_height="match_parent">
+                <ImageButton
+                    android:id="@+id/button_bt"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_bluetooth"
+                    android:scaleType="fitXY"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent" />
+                <ImageButton
+                    android:id="@+id/button_usb"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_usb"
+                    android:scaleType="fitXY"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="match_parent">
+                <ImageButton
+                    android:id="@+id/button_settings"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_settings"
+                    android:scaleType="fitXY"
+                    android:layout_marginEnd="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent" />
+                <ImageButton
+                    android:id="@+id/button_application"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_application"
+                    android:scaleType="fitXY"
+                    android:background="@android:color/transparent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
 </LinearLayout>
