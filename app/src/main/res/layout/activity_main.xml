@@ -16,23 +16,29 @@
             android:layout_weight="1"
             android:gravity="end">
             <TextView
+                android:id="@+id/tv_time"
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:text="12:30"
                 android:textColor="@color/white"
                 android:textSize="45sp"
+                android:paddingEnd="10dp"
                 android:gravity="end"/>
             <ImageView
-                android:layout_width="100dp"
+                android:id="@+id/iv_wifi"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
-                android:padding="15dp"
+                android:padding="10dp"
+                android:visibility="visible"
                 android:src="@drawable/wifi_signal_high" />
             <ImageView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/battery_icon_full"
-                android:padding="15dp"
-                android:layout_marginEnd="50dp"/>
+                android:paddingStart="10dp"
+                android:paddingEnd="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/battery_icon_full" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
