@@ -2,6 +2,7 @@ package com.twd.launcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,8 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView tv_time;
     private ImageView iv_wifi;
+    private ImageView iv_battery;
 
     private Handler timeHandler = new Handler();
+    private Handler UiHandler = new Handler();
+    private Context mContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         //初始化时间
         updateTimeRunnable.run();
+        UiUpdateRunnable.run();
     }
 
     private void initView(){
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_application = findViewById(R.id.button_application);
         tv_time = findViewById(R.id.tv_time);
         iv_wifi = findViewById(R.id.iv_wifi);
+        iv_battery = findViewById(R.id.iv_battery);
 
         bt_youtube.setOnClickListener(this::onClick);
         bt_google.setOnClickListener(this::onClick);
@@ -92,10 +98,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
+    private Runnable UiUpdateRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Utils.updateWifiSignalStrength(iv_wifi,mContext);
+            Utils.updateBatteryStatus(iv_battery,mContext);
+            //每隔5秒更新一次
+            UiHandler.postDelayed(this,5000);
+        }
+    };
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         timeHandler.removeCallbacks(updateTimeRunnable);
+        UiHandler.removeCallbacks(UiUpdateRunnable);
     }
 
     @Override
