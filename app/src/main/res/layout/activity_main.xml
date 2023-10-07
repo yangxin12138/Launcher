@@ -15,6 +15,11 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="end">
+            <ImageView
+                android:id="@+id/iv_usb"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"/>
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="180dp"

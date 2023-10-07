@@ -2,8 +2,12 @@ package com.twd.launcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton bt_settings;
     private ImageButton bt_application;
 
+    private ImageView iv_usb;
     private TextView tv_time;
     private ImageView iv_wifi;
     private ImageView iv_battery;
@@ -54,6 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //初始化时间
         updateTimeRunnable.run();
         UiUpdateRunnable.run();
+        //获取UsbManager的实例
+        UsbManager usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
+        IntentFilter filter =  new IntentFilter();
+        filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
+        filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
+        registerReceiver(usbDeviceReceiver,filter);
     }
 
     private void initView(){
@@ -65,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_usb = findViewById(R.id.button_usb);
         bt_settings = findViewById(R.id.button_settings);
         bt_application = findViewById(R.id.button_application);
+        iv_usb = findViewById(R.id.iv_usb);
         tv_time = findViewById(R.id.tv_time);
         iv_wifi = findViewById(R.id.iv_wifi);
         iv_battery = findViewById(R.id.iv_battery);
@@ -108,11 +120,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
+    private BroadcastReceiver usbDeviceReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (UsbManager.ACTION_USB_DEVICE_ATTACHED.equals(action)){
+                //USB设备已经插入
+                UsbDevice usbDevice = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+                //执行相应的逻辑
+                iv_usb.setImageResource(R.drawable.usb_icon);
+            } else if (UsbManager.ACTION_USB_DEVICE_DETACHED.equals(action)) {
+                //USB设备已经拔出
+                UsbDevice usbDevice = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+                //执行相应的逻辑
+                iv_usb.setImageDrawable(null);
+            }
+        }
+    };
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         timeHandler.removeCallbacks(updateTimeRunnable);
         UiHandler.removeCallbacks(UiUpdateRunnable);
+        unregisterReceiver(usbDeviceReceiver);
     }
 
     @Override
