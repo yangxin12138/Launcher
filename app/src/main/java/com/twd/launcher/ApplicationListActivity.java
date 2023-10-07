@@ -80,6 +80,17 @@ public class ApplicationListActivity extends AppCompatActivity {
             }
             viewHold.iv_icon.setImageDrawable(app.activityInfo.loadIcon(context.getPackageManager()));
             viewHold.tv_name.setText(app.loadLabel(manager).toString());
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 在这里处理点击应用程序图标的逻辑
+                    Intent intent = context.getPackageManager().getLaunchIntentForPackage(app.activityInfo.packageName);
+                    if (intent != null) {
+                        context.startActivity(intent);
+                    }
+                }
+            });
             return convertView;
         }
 
